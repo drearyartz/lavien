@@ -1,0 +1,16 @@
+{
+  "name": "lavien-cafe",
+  "version": "1.0.0",
+  "private": true,
+  "description": "LA'VIEN Cafe & Restaurant - Adisyon Otomasyon Paneli",
+  "scripts": {
+    "setup": "npm install --prefix backend && npm install --prefix frontend",
+    "db:migrate": "npm run db:migrate --prefix backend",
+    "db:seed": "npm run db:seed --prefix backend",
+    "dev": "concurrently -n backend,frontend -c blue,green \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
+    "build": "npm run build --prefix frontend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

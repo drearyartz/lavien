@@ -1,0 +1,7 @@
+node_modules/
+backend/data/*.sqlite
+backend/data/*.sqlite-*
+.env
+dist/
+*.log
+.claude/settings.local.json

@@ -1,0 +1,377 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* Zemin: siyaha yakin cok koyu griden hafif acik griye dikey gradyan */
+  --bg-gradient: linear-gradient(180deg, #1c1c1e 0%, #131315 45%, #0a0a0b 100%);
+
+  /* Beyazin opaklik seviyeleriyle kurulan hiyerarsi - renk cesitliligi yok */
+  --text-primary: rgba(255, 255, 255, 0.96);
+  --text-secondary: rgba(255, 255, 255, 0.60);
+  --text-tertiary: rgba(255, 255, 255, 0.38);
+  --divider: rgba(255, 255, 255, 0.12);
+  --border-subtle: rgba(255, 255, 255, 0.14);
+  --border-strong: rgba(255, 255, 255, 0.24);
+  --surface-card: rgba(255, 255, 255, 0.06);
+  --surface-card-hover: rgba(255, 255, 255, 0.09);
+  --surface-card-strong: rgba(255, 255, 255, 0.11);
+
+  --danger: rgba(255, 255, 255, 0.92);
+  --danger-bg: rgba(255, 255, 255, 0.10);
+
+  /* Vurgu/aksiyon ogeleri icin kirmizi glow (yalnizca birincil butonlar, aktif
+     sekmeler, focus halkalari ve modallarda kullanilir - genel zemin/kart
+     yapisi koyu gri kalir) */
+  --red: 239, 68, 68;
+  --accent-red: #ef4444;
+  --glow-red-soft: 0 0 0 1px rgba(var(--red), 0.22), 0 4px 16px rgba(var(--red), 0.28);
+  --glow-red-strong: 0 0 0 1px rgba(var(--red), 0.45), 0 6px 28px rgba(var(--red), 0.55);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+a {
+  color: inherit;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  color: inherit;
+}
+
+hr, .divider {
+  border: none;
+  border-top: 1px solid var(--divider);
+  margin: 0;
+}
+
+/* ---------- Marka basligi ---------- */
+.brand-title {
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-weight: 300;
+  font-size: 2.25rem;
+  color: var(--text-primary);
+  text-align: center;
+  margin: 0;
+}
+
+.brand-subtitle {
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-weight: 400;
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+  text-align: center;
+  margin-top: 0.4rem;
+}
+
+/* ---------- Kart ---------- */
+.card {
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  border-top-color: var(--border-strong);
+  padding: 1.5rem;
+}
+
+/* ---------- Butonlar ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.05s ease;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  background: var(--surface-card-hover);
+  border-color: var(--border-strong);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: rgba(255, 255, 255, 0.96);
+  color: #0a0a0b;
+  border-color: rgba(var(--red), 0.55);
+  box-shadow: var(--glow-red-soft);
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.2s ease, transform 0.05s ease;
+}
+
+.btn-primary:hover {
+  background: #ffffff;
+  border-color: rgba(var(--red), 0.85);
+  box-shadow: var(--glow-red-strong);
+}
+
+.btn-danger {
+  background: transparent;
+  border-color: rgba(var(--red), 0.35);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.btn-danger:hover {
+  background: rgba(var(--red), 0.14);
+  border-color: rgba(var(--red), 0.75);
+  box-shadow: var(--glow-red-soft);
+  color: #ffffff;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--text-secondary);
+}
+
+.btn-ghost:hover {
+  background: var(--surface-card);
+  color: var(--text-primary);
+}
+
+.btn-lg {
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* ---------- Form elemanlari ---------- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.field label {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+
+.input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.85rem;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.input:focus {
+  border-color: rgba(var(--red), 0.6);
+  box-shadow: 0 0 0 3px rgba(var(--red), 0.16);
+}
+
+/* ---------- Tablo (admin) ---------- */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.table th {
+  text-align: left;
+  color: var(--text-tertiary);
+  font-weight: 500;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--divider);
+}
+
+.table td {
+  padding: 0.7rem 0.75rem;
+  border-bottom: 1px solid var(--divider);
+  color: var(--text-primary);
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ---------- Yardimci siniflar ---------- */
+.text-secondary { color: var(--text-secondary); }
+.text-tertiary { color: var(--text-tertiary); }
+
+.stack { display: flex; flex-direction: column; }
+.row { display: flex; flex-direction: row; align-items: center; }
+.gap-xs { gap: 0.4rem; }
+.gap-sm { gap: 0.75rem; }
+.gap-md { gap: 1.25rem; }
+.gap-lg { gap: 2rem; }
+.space-between { justify-content: space-between; }
+.wrap { flex-wrap: wrap; }
+
+.page {
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.page-narrow {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  background: var(--surface-card-strong);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+}
+
+.nav-tab-active {
+  color: var(--text-primary) !important;
+  border-bottom-color: var(--accent-red) !important;
+  text-shadow: 0 0 10px rgba(var(--red), 0.65);
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 4, 5, 0.88);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.error-text {
+  color: var(--text-primary);
+  background: var(--danger-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.85rem;
+  font-size: 0.85rem;
+}
+
+/* ---------- Mobil uyum ---------- */
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.admin-tabs {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  flex-wrap: nowrap !important;
+}
+
+@media (max-width: 720px) {
+  .page {
+    padding: 1rem;
+  }
+
+  .card {
+    padding: 1.1rem;
+  }
+
+  .brand-title {
+    font-size: 1.6rem;
+    letter-spacing: 0.16em;
+  }
+
+  .order-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .order-layout .cart-panel {
+    position: static !important;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.55rem 0.5rem;
+    font-size: 0.82rem;
+  }
+}
+
+/* ---------- Print ---------- */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #receipt-print, #receipt-print * {
+    visibility: visible;
+  }
+  #receipt-print {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80mm;
+    color: #000;
+    background: #fff;
+  }
+}
