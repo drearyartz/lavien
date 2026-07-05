@@ -1,0 +1,12 @@
+/* RN Web'de flex:1 zincirinin tum viewport'u kaplayabilmesi icin gerekli
+   (frontend/src/styles/theme.css'teki ayni "html, body, #root { height: 100% }"
+   kuraliyla tutarli). expo start --web dev sunucusu +html.jsx'i islemedigi
+   icin bu reset JS bundle uzerinden global.css importuyla uygulanir. */
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #0a0a0b;
+}

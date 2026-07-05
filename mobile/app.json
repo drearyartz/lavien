@@ -1,0 +1,14 @@
+{
+  "expo": {
+    "name": "LA'VIEN Personel",
+    "slug": "lavien-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "lavienmobile",
+    "userInterfaceStyle": "dark",
+    "web": {
+      "output": "static"
+    },
+    "plugins": ["expo-router"]
+  }
+}

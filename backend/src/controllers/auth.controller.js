@@ -13,8 +13,8 @@ function login(req, res) {
   }
 
   const user = db
-    .prepare('SELECT * FROM users WHERE username = ? AND is_active = 1')
-    .get(username);
+    .prepare('SELECT * FROM users WHERE LOWER(username) = LOWER(?) AND is_active = 1')
+    .get(username.trim());
 
   if (!user) {
     return res.status(401).json({ error: 'Kullanıcı adı veya şifre hatalı.' });
