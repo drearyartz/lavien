@@ -8,7 +8,7 @@
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
     "db:migrate": "node src/db/migrate.js",
-    "db:seed": "node src/db/seed.js"
+    "db:seed": "node src/db/seed.js && node src/db/seedMenu.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",

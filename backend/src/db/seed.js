@@ -25,70 +25,6 @@ function seedUsers() {
   }
 }
 
-function seedCategoriesAndProducts() {
-  const insertCategory = db.prepare(`
-    INSERT INTO categories (name, sort_order) VALUES (?, ?)
-  `);
-  const findCategory = db.prepare(`SELECT id FROM categories WHERE name = ?`);
-  const insertProduct = db.prepare(`
-    INSERT INTO products (category_id, name, price) VALUES (?, ?, ?)
-  `);
-  const countProducts = db.prepare(`SELECT COUNT(*) as c FROM products WHERE category_id = ? AND name = ?`);
-
-  const menu = [
-    {
-      category: 'Sıcak İçecekler',
-      items: [
-        { name: 'Türk Kahvesi', price: 60 },
-        { name: 'Filtre Kahve', price: 70 },
-        { name: 'Çay', price: 30 },
-        { name: 'Sahlep', price: 80 },
-      ],
-    },
-    {
-      category: 'Soğuk İçecekler',
-      items: [
-        { name: 'Limonata', price: 90 },
-        { name: 'Ice Latte', price: 100 },
-        { name: 'Kola', price: 60 },
-      ],
-    },
-    {
-      category: 'Tatlılar',
-      items: [
-        { name: 'Cheesecake', price: 150 },
-        { name: 'Brownie', price: 130 },
-      ],
-    },
-    {
-      category: 'Kahvaltılık',
-      items: [
-        { name: 'Serpme Kahvaltı', price: 350 },
-        { name: 'Omlet', price: 120 },
-      ],
-    },
-  ];
-
-  let sortOrder = 0;
-  for (const group of menu) {
-    let cat = findCategory.get(group.category);
-    if (!cat) {
-      const result = insertCategory.run(group.category, sortOrder);
-      cat = { id: result.lastInsertRowid };
-      console.log(`Kategori olusturuldu: ${group.category}`);
-    }
-    sortOrder += 1;
-
-    for (const item of group.items) {
-      const existing = countProducts.get(cat.id, item.name);
-      if (existing.c === 0) {
-        insertProduct.run(cat.id, item.name, item.price);
-        console.log(`  Urun eklendi: ${item.name} (${item.price} TL)`);
-      }
-    }
-  }
-}
-
 function seedTables() {
   const insert = db.prepare(`INSERT INTO tables (name) VALUES (?)`);
   const findTable = db.prepare(`SELECT id FROM tables WHERE name = ?`);
@@ -103,8 +39,8 @@ function seedTables() {
   }
 }
 
+// Kategori/urun menusu seedMenu.js'te (npm run db:seed bu ikisini sirayla calistirir).
 seedUsers();
-seedCategoriesAndProducts();
 seedTables();
 
 console.log('Seed tamamlandi.');
